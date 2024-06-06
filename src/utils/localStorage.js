@@ -37,3 +37,16 @@ export const updateTaskCompletionStatusInLocalStorage = (taskId, isCompleted) =>
         localStorage.setItem('todolist', JSON.stringify(updatedTasks));
     }
 };
+
+export const updateTaskDescriptionStatusInLocalStorage = (taskId, description) => {
+    const storedTasks = JSON.parse(localStorage.getItem('todolist'));
+    if (storedTasks) {
+        const updatedTasks = storedTasks.map(task => {
+            if (task.id === taskId) {
+                return { ...task, description: description };
+            }
+            return task;
+        });
+        localStorage.setItem('todolist', JSON.stringify(updatedTasks));
+    }
+};
