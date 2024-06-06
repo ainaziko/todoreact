@@ -184,6 +184,8 @@ input[class="business"]:checked:after {
 .task__text {
     margin-left: 0.5rem;
     outline: 0px solid transparent; 
+    border: none; 
+    outline: none;
 }
 
 .strikeout {
