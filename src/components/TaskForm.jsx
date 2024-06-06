@@ -8,8 +8,9 @@ const TaskForm = ({ onSubmit }) => {
         event.preventDefault();
         if(!(taskDescription && selectedCategory)){
             alert('Please enter a task description and select a category.');
+            return;
         }
-        onSubmit({ description: taskDescription, category: selectedCategory, isCompleted: false });
+        onSubmit({ description: taskDescription, category: selectedCategory, isCompleted:false });
         setTaskDescription('');
         setSelectedCategory('');
         event.target.reset();
