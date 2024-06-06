@@ -18,20 +18,25 @@ function App() {
     const newTasks = [...tasks];
     newTasks[index].isCompleted = !newTasks[index].isCompleted;
     setTasks(newTasks);
-};
+  };
 
-return (
-    <main>
-        <TaskForm onSubmit={handleAddTask} />
-        <p className="uppercase">TODO LIST</p>
-        <TaskList
-            tasks={tasks}
-            onStrikeTask={handleStrikeTask}
-            onEditTask={handleStrikeTask}
-            onDeleteTask={handleStrikeTask}
-        />
-    </main>
-);
+  const handleDeleteTask = (index) => {
+    setTasks(tasks.filter((_, i) => i !== index));
+  }; 
+
+
+  return (
+      <main>
+          <TaskForm onSubmit={handleAddTask} />
+          <p className="uppercase">TODO LIST</p>
+          <TaskList
+              tasks={tasks}
+              onStrikeTask={handleStrikeTask}
+              onEditTask={handleStrikeTask}
+              onDeleteTask={handleDeleteTask}
+          />
+      </main>
+  );
 }
 
 export default App;
