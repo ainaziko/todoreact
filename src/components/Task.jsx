@@ -8,7 +8,7 @@ const Task = ({task, onStrike, onDelete, }) => {
     return (
         <div className="task">
             <div className="task-description">
-                <input className={category} type="checkbox" name="checkbox" onChange={onStrike}/>
+                <input className={category} type="checkbox" name="checkbox" onChange={onStrike} checked={isCompleted}/>
                 <p className={`task__text ${isCompleted ? 'strikeout' : ''}`}>
                     {description}
                 </p>

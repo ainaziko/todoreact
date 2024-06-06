@@ -3,7 +3,12 @@ import Greeting from "./components/Greeting";
 import TaskForm from "./components/TaskForm";
 import TaskList from "./components/TaskList";
 import './styles/index.css';
-import { saveTaskToLocalStorage, getTasksFromLocalStorage, deleteTaskFromLocalStorage } from "./utils/localStorage";
+import { 
+        saveTaskToLocalStorage, 
+        getTasksFromLocalStorage, 
+        deleteTaskFromLocalStorage, 
+        updateTaskCompletionStatusInLocalStorage 
+} from "./utils/localStorage";
 
 
 function App() {
@@ -29,11 +34,17 @@ const handleAddTask = (task) => {
   });
 };
 
-  const handleStrikeTask = (index) => {
-    const newTasks = [...tasks];
-    newTasks[index].isCompleted = !newTasks[index].isCompleted;
-    setTasks(newTasks);
-  };
+const handleStrikeTask = (taskId) => {
+  const updatedTasks = tasks.map(task => {
+      if (task.id === taskId) {
+          return { ...task, isCompleted: !task.isCompleted };
+      }
+      return task;
+  });
+
+  setTasks(updatedTasks);
+  updateTaskCompletionStatusInLocalStorage(taskId, !tasks.find(task => task.id === taskId).isCompleted);
+};
 
   const handleDeleteTask = (taskId) => {
     setTasks(prevTasks => {

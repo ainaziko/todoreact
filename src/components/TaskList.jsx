@@ -8,7 +8,7 @@ const TaskList = ({tasks, onStrikeTask, onEditTask, onDeleteTask}) => {
                 <Task
                     key={index}
                     task={task}
-                    onStrike={() => onStrikeTask(index)}
+                    onStrike={() => onStrikeTask(task.id)}
                     onEdit={() => onStrikeTask(index)}
                     onDelete={() => onDeleteTask(task.id)}
                 />
