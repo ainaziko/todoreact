@@ -57,6 +57,7 @@ const handleStrikeTask = (taskId) => {
 
   return (
       <main>
+          <Greeting text={"What's up, "} placeholder={"your name"}/>
           <TaskForm onSubmit={handleAddTask} />
           <p className="uppercase">TODO LIST</p>
           <TaskList

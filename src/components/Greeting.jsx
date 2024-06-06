@@ -15,7 +15,14 @@ const Greeting = ({text, placeholder}) => {
         const name = event.target.value;
         setUsername(name);
         saveUsernameToLocalStorage(name);    
-    }, []);  
+    }, []);
+
+    const handleKeyDown = (event) => {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            event.target.blur();
+        }
+    };
 
     return (
         <div className="greeting">
@@ -25,6 +32,7 @@ const Greeting = ({text, placeholder}) => {
                 placeholder={placeholder}
                 value={username}
                 onChange={handleUsernameChange}
+                onKeyDown={handleKeyDown}
             />
         </div>
     );
