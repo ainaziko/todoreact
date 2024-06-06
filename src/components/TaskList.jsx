@@ -10,7 +10,7 @@ const TaskList = ({tasks, onStrikeTask, onEditTask, onDeleteTask}) => {
                     task={task}
                     onStrike={() => onStrikeTask(index)}
                     onEdit={() => onStrikeTask(index)}
-                    onDelete={() => onDeleteTask(index)}
+                    onDelete={() => onDeleteTask(task.id)}
                 />
             ))}
         </div>

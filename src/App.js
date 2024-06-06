@@ -3,7 +3,7 @@ import Greeting from "./components/Greeting";
 import TaskForm from "./components/TaskForm";
 import TaskList from "./components/TaskList";
 import './styles/index.css';
-import { saveTaskToLocalStorage, getTasksFromLocalStorage } from "./utils/localStorage";
+import { saveTaskToLocalStorage, getTasksFromLocalStorage, deleteTaskFromLocalStorage } from "./utils/localStorage";
 
 
 function App() {
@@ -25,12 +25,9 @@ const handleAddTask = (task) => {
   setTasks(prevTasks => {
       const updatedTasks = [...prevTasks, task];
       saveTaskToLocalStorage(updatedTasks);
-      console.log('save', updatedTasks);
       return updatedTasks;
   });
-  console.log(task);
 };
-
 
   const handleStrikeTask = (index) => {
     const newTasks = [...tasks];
@@ -38,10 +35,13 @@ const handleAddTask = (task) => {
     setTasks(newTasks);
   };
 
-  const handleDeleteTask = (index) => {
-    setTasks(tasks.filter((_, i) => i !== index));
-    //del from local storage
-  }; 
+  const handleDeleteTask = (taskId) => {
+    setTasks(prevTasks => {
+        const updatedTasks = prevTasks.filter(task => task.id !== taskId);
+        deleteTaskFromLocalStorage(taskId);
+        return updatedTasks;
+    });
+};
 
 
   return (

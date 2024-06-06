@@ -13,6 +13,15 @@ export const saveTaskToLocalStorage = (tasks) => {
 }
 
 export const getTasksFromLocalStorage = () => {
+    //localStorage.clear();
     const tasks = JSON.parse(localStorage.getItem('todolist'));
     return tasks !== null ? tasks : '';
 }
+
+export const deleteTaskFromLocalStorage = (taskId) => {
+    const storedTasks = JSON.parse(localStorage.getItem('todolist'));
+    if (storedTasks) {
+        const updatedTasks = storedTasks.filter(task => task.id !== taskId);
+        localStorage.setItem('todolist', JSON.stringify(updatedTasks));
+    }
+};

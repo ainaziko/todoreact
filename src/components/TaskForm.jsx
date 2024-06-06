@@ -10,7 +10,7 @@ const TaskForm = ({ onSubmit }) => {
             alert('Please enter a task description and select a category.');
             return;
         }
-        onSubmit({ description: taskDescription, category: selectedCategory, isCompleted:false });
+        onSubmit({id:Date.now(), description: taskDescription, category: selectedCategory, isCompleted:false });
         setTaskDescription('');
         setSelectedCategory('');
         event.target.reset();
